@@ -28,8 +28,14 @@ server {
     listen 80;
     root /var/www/html;
     index iniciowebbus/index.html index.php;
+    location = / {
+        return 301 /iniciowebbus/index.html;
+    }
+    location = /index.html {
+        return 301 /iniciowebbus/index.html;
+    }
     location / {
-        try_files \$uri \$uri/ /iniciowebbus/index.html;
+        try_files \$uri \$uri/ =404;
     }
     location ~ \.php\$ {
         try_files \$uri =404;
