@@ -1,5 +1,19 @@
-// INICIALIZAR MAPA
-var mapa = L.map('mapa').setView([10.9685, -74.7813], 13);
+// ============================================================
+// MAPA RESTRINGIDO A BARRANQUILLA Y SOLEDAD
+// ============================================================
+
+// Límites del área metropolitana: Barranquilla + Soledad
+var limitesSur = [10.87, -75.00];   // Esquina suroeste (Soledad sur)
+var limitesNorte = [11.05, -74.72]; // Esquina noreste (Barranquilla norte)
+var boundsArea = L.latLngBounds(limitesSur, limitesNorte);
+
+// INICIALIZAR MAPA con restricciones
+var mapa = L.map('mapa', {
+    maxBounds: boundsArea.pad(0.05),  // Pequeño margen extra
+    maxBoundsViscosity: 1.0,           // No dejar salir del área
+    minZoom: 12,                       // No permitir alejarse demasiado
+    maxZoom: 18
+}).setView([10.9685, -74.7813], 13);
 
 // CAPA
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -92,9 +106,12 @@ window.onload = function(){
             return;
         }
 
-        // función para buscar coordenadas
+        // función para buscar coordenadas SOLO en Barranquilla/Soledad
         function buscarLugar(lugar){
-            return fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${lugar}, Barranquilla, Colombia&limit=1`)
+            // viewbox restringe la búsqueda al área de Barranquilla + Soledad
+            // bounded=1 fuerza que los resultados estén dentro del viewbox
+            var viewbox = '-75.00,10.87,-74.72,11.05';
+            return fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(lugar)}, Barranquilla, Colombia&viewbox=${viewbox}&bounded=1&limit=1`)
             .then(res => res.json());
         }
 
