@@ -41,17 +41,36 @@ body {
 .buses-card:nth-child(6) { animation-delay: 0.35s; }
 
 .buses-card-icon {
-    font-size: 36px;
-    width: 64px;
-    height: 64px;
+    width: 68px;
+    height: 68px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: var(--radius-md);
-    line-height: 1;
+    border-radius: 12px;
+    background: #ffffff !important; 
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    padding: 8px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
 }
 
-/* Colores únicos por empresa */
+.buses-card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.buses-card:hover .buses-card-icon {
+    box-shadow: 0 8px 25px rgba(255,255,255,0.1);
+}
+
+.buses-card:hover .buses-card-icon img {
+    transform: scale(1.08);
+}
+
+/* Colores únicos (Se mantienen pero ocultos bajo el !important del fondo, o si decides quitar las imágenes y volver a emojis se usarían) */
 .buses-icon-1 { background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.08)); border: 1px solid rgba(59,130,246,0.25); }
 .buses-icon-2 { background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(139,92,246,0.08)); border: 1px solid rgba(139,92,246,0.25); }
 .buses-icon-3 { background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(34,197,94,0.08)); border: 1px solid rgba(34,197,94,0.25); }
