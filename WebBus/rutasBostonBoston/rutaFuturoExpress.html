@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ruta Futuro Express</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <link rel="stylesheet" href="../global.css">
+        <link rel="stylesheet" href="../navbar.css">
+        <link rel="stylesheet" href="../rutasCompartido.css">
+    </head>
+    
+    <body>
+                <header class="navbar">
+            <a href="../bienvenidaUsuario/bienvenidaUsuario.html" class="logo-area">
+                <img src="../imagenes/iconoWebBus.png" alt="logo WebBus">
+                <div>
+                    <h1>WebBus</h1>
+                    <p>Transporte inteligente en Barranquilla</p>
+                </div>
+            </a>
+            <nav class="nav-menu">
+                <a href="../bienvenidaUsuario/bienvenidaUsuario.html" class="nav-link">Inicio</a>
+                <a href="../busesDisponible/busesDisponible.html" class="nav-link">Rutas</a>
+                <a href="../paradasDisponiblesUsuario/paradaDisponiblesUsuario.html" class="nav-link">Paradas</a>
+                <a href="../planificarTuViajeUsuario/planificarTuViajeUsuario.html" class="nav-link">Planificar Viaje</a>
+                <a href="../estadoDelServicioUsuario/estadoDelServicio.html" class="nav-link">Estado</a>
+                <div class="nav-separator"></div>
+                <div class="user-profile" id="userProfileBtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <div class="user-info">
+                        <p class="user-name" id="userName">Usuario</p>
+                        <p class="user-status">Activo</p>
+                    </div>
+                    <span class="user-dropdown-icon">?</span>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="#perfil">Ver Perfil</a>
+                        <button class="btn-logout" id="btnLogout">Cerrar Sesi�n</button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <!-- MAPA FULL -->
+         <div class="ruta-detalle-layout">
+            <div class="ruta-mapa-container">
+                <div id="mapa"></div>
+            </div>
+            <div class="ruta-info">
+            <h2>Recorrido Ruta Futuro Express</h2>
+            <p>
+                NEVADA FRENTE A LA ESCUELA DE POLICÍA – Avenida Circunvalar – Boulevard de Simón Bolívar – Carrera 7 – 
+                Calle 24 – Carrera 10 – Calle 30 – Carrera 39 – Calle 38 – Carrera 43 – Calle 84 – Carrera 64 – Calle 85 – 
+                Carrera 44 – Calle 70 – Carrera 41 – Calle 37 – Carrera 40 – Calle 30 – Carrera 15 – Calle 24 – Carrera 7 – 
+                Boulevard de Simón Bolívar – Avenida Circunvalar – Retorno Escuela de Polícia – Avenida Circunvalar – 
+                NEVADA FRENTE A LA ESCUELA DE POLÍCIA
+            </p>
+        </div>
+        </div>
+
+        <!-- Leaflet PRIMERO -->
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <!-- Luego Routing -->
+        <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+        <script src="rutaFuturoExpress.js"></script>
+        
+        <footer class="wb-footer">
+            � 2026 <span>WebBus</span> � Nicole Castilla � Marlon Pertuz � Joshua Castro
+        </footer>
+        <script src="../userProfile.js"></script>
+</body>
+</html>
+
+
+
+

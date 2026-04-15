@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paradas cercanas | WebBus</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../navbar.css">
+    <link rel="stylesheet" href="paradasDisponiblesUsuario.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="../bienvenidaUsuario/bienvenidaUsuario.html" class="logo-area">
+            <img src="../imagenes/iconoWebBus.png" alt="logo WebBus">
+            <div>
+                <h1>WebBus</h1>
+                <p>Transporte inteligente en Barranquilla</p>
+            </div>
+        </a>
+        <nav class="nav-menu">
+            <a href="../bienvenidaUsuario/bienvenidaUsuario.html" class="nav-link" data-page="bienvenida">Inicio</a>
+            <a href="../busesDisponible/busesDisponible.html" class="nav-link" data-page="buses">Rutas</a>
+            <a href="./paradaDisponiblesUsuario.html" class="nav-link active" data-page="paradas">Paradas</a>
+            <a href="../planificarTuViajeUsuario/planificarTuViajeUsuario.html" class="nav-link" data-page="planificar">Planificar Viaje</a>
+            <a href="../estadoDelServicioUsuario/estadoDelServicio.html" class="nav-link" data-page="estado">Estado</a>
+            <div class="nav-separator"></div>
+            <div class="user-profile" id="userProfileBtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div class="user-info">
+                    <p class="user-name" id="userName">Usuario</p>
+                    <p class="user-status">Activo</p>
+                </div>
+                <span class="user-dropdown-icon">▼</span>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#perfil">Ver Perfil</a>
+                    <button class="btn-logout" id="btnLogout">Cerrar Sesión</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="wb-page-header">
+            <h1>Paradas cercanas</h1>
+            <p>Ubica las paradas de buses más cercanas a tu posición en el mapa para planear tu abordaje de forma eficiente.</p>
+        </div>
+
+        <div class="contenedor-paradas">
+            <div class="mapa">
+                <div id="mapa"></div>
+                <button id="fullscreenBtn">⛶</button>
+            </div>
+            
+            <div class="lista" id="listaDirecciones">
+                <div class="buscador">
+                    <input id="direccion" type="text" placeholder="Ingresa tu dirección o búscalo en el mapa">
+                    <button id="btnBuscar">Buscar</button>
+                </div>
+                
+                <div class="parada" data-lat="10.9685" data-lon="-74.7813">
+                    <div>
+                        <h4>Avenida Murillo y Carrera 33</h4>
+                        <p>A 120 metros</p>
+                    </div>
+                    <button>Ver</button>
+                </div>
+                
+                <div class="parada" data-lat="10.9698" data-lon="-74.7800">
+                    <div>
+                        <h4>Avenida Murillo y Carrera 34</h4>
+                        <p>A 210 metros</p>
+                    </div>
+                    <button>Ver</button>
+                </div>
+
+                <div class="parada" data-lat="10.9672" data-lon="-74.7831">
+                    <div>
+                        <h4>Carrera 33 y Calle 47</h4>
+                        <p>A 350 metros</p>
+                    </div>
+                    <button>Ver</button>
+                </div>
+
+                <div class="parada" data-lat="10.9705" data-lon="-74.7820">
+                    <div>
+                        <h4>Carrera 34 y Calle 43B</h4>
+                        <p>A 420 metros</p>
+                    </div>
+                    <button>Ver</button>
+                </div>
+
+                <div class="parada" data-lat="10.9680" data-lon="-74.7810">
+                    <div>
+                        <h4>Carrera 33 y Calle 43</h4>
+                        <p>A 500 metros</p>
+                    </div>
+                    <button>Ver</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="wb-footer">
+        © 2026 <span>WebBus</span> — Nicole Castilla · Marlon Pertuz · Joshua Castro
+    </footer>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="paradasDisponiblesUsuario.js"></script>
+    <script src="../userProfile.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Recupera la contraseña de tu cuenta WebBus.">
+    <title>Recuperar Contraseña | WebBus</title>
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="recuperarContraseña.css">
+</head>
+<body class="auth-body">
+
+    <div class="auth-bg"></div>
+    <div class="auth-bg-overlay"></div>
+
+    <div class="auth-wrapper">
+        <main class="auth-panel auth-panel-center">
+            <div class="auth-form-wrap">
+                <a href="../iniciowebbus/index.html" class="auth-brand-logo-center">
+                    <img src="../imagenes/iconoWebBus.png" alt="WebBus Logo">
+                    <span>WebBus</span>
+                </a>
+
+                <div class="auth-form-header">
+                    <h1>Recibir enlace de recuperación</h1>
+                    <p>Ingresa tu correo y te enviaremos instrucciones para restablecer tu contraseña.</p>
+                </div>
+
+                <form id="recoverPasswordForm" class="auth-form" novalidate>
+                    <div class="wb-form-group">
+                        <label class="wb-label" for="correo">Correo electrónico</label>
+                        <input
+                            class="wb-input"
+                            type="email"
+                            id="correo"
+                            placeholder="tucorreo@ejemplo.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <button type="button" id="enviar" class="wb-btn wb-btn-primary wb-btn-full auth-submit">
+                        Enviar enlace de recuperación
+                    </button>
+
+                    <p class="auth-switch">
+                        ¿Recordaste tu contraseña?
+                        <a href="../inicioSesion/inicioSesion.html">Iniciar sesión</a>
+                    </p>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <footer class="wb-footer auth-footer">
+        © 2026 <span>WebBus</span> — Nicole Castilla · Marlon Pertuz · Joshua Castro
+    </footer>
+
+    <!-- EmailJS CDN Oficial v3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/emailjs-com/3.2.0/email.min.js"></script>
+    <script src="../../config/EMAILJS_CONFIG.js"></script>
+    <script src="scriptRecuperarContraseña.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<?php
+// ============================================
+// PÁGINA: Recuperar Contraseña (PHP)
+// ============================================
+
+?>
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Recuperar Contraseña - Web Bus</title>
+        <link rel="stylesheet" href="recuperarContraseña.css">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
+    </head>
+
+    <body class="fondo">
+        <header class="header">
+            <div class="logo">
+                <img src="../imagenes/iconoWebBus.png" alt="Logo">
+                <span>Web Bus</span>
+            </div>
+        </header>
+        
+        <div class="container">
+            <div class="card">
+                <h2>Recuperar Contraseña</h2>
+                <p>
+                    Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.
+                </p>
+                <input type="email" id="correo" placeholder="Ingresa tu correo electrónico">
+                <button class="btn" id="enviar">Enviar enlace</button>
+                <p class="login-link">
+                    ¿Recordaste tu contraseña? <a href="../inicioSesion/inicioSesion.html">Iniciar sesión</a>
+                </p>
+            </div>
+        </div>
+        <footer>
+            © 2026 Web Bus - Nicole Castilla, Marlon Pertuz y Joshua Castro.
+        </footer>
+        <script src="scriptRecuperarContraseña.js"></script>
+    </body>
+</html>

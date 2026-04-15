@@ -1,0 +1,121 @@
+/* ============================================================
+   Buses Disponibles — busesDisponible.css
+   ============================================================ */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.buses-main {
+    flex: 1;
+}
+
+/* ─── Grid de empresas ───────────────────────────────────────── */
+.buses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px 60px;
+}
+
+/* ─── Card de empresa ────────────────────────────────────────── */
+.buses-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 30px 28px;
+    text-decoration: none;
+    cursor: pointer;
+    animation: wb-fadeInUp 0.5s ease-out;
+}
+
+.buses-card:nth-child(2) { animation-delay: 0.07s; }
+.buses-card:nth-child(3) { animation-delay: 0.14s; }
+.buses-card:nth-child(4) { animation-delay: 0.21s; }
+.buses-card:nth-child(5) { animation-delay: 0.28s; }
+.buses-card:nth-child(6) { animation-delay: 0.35s; }
+
+.buses-card-icon {
+    font-size: 36px;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    line-height: 1;
+}
+
+/* Colores únicos por empresa */
+.buses-icon-1 { background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.08)); border: 1px solid rgba(59,130,246,0.25); }
+.buses-icon-2 { background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(139,92,246,0.08)); border: 1px solid rgba(139,92,246,0.25); }
+.buses-icon-3 { background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(34,197,94,0.08)); border: 1px solid rgba(34,197,94,0.25); }
+.buses-icon-4 { background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(245,158,11,0.08)); border: 1px solid rgba(245,158,11,0.25); }
+.buses-icon-5 { background: linear-gradient(135deg, rgba(239,68,68,0.2), rgba(239,68,68,0.08)); border: 1px solid rgba(239,68,68,0.25); }
+.buses-icon-6 { background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(6,182,212,0.08)); border: 1px solid rgba(6,182,212,0.25); }
+
+.buses-card-info {
+    flex: 1;
+}
+
+.buses-card-info h3 {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    transition: var(--transition);
+}
+
+.buses-card:hover .buses-card-info h3 {
+    color: var(--primary-light);
+}
+
+.buses-card-info p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+.buses-arrow {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary-light);
+    opacity: 0;
+    transition: var(--transition);
+    letter-spacing: 0.2px;
+}
+
+.buses-card:hover .buses-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .buses-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 24px 50px;
+    }
+}
+
+@media (max-width: 560px) {
+    .buses-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px 40px;
+    }
+
+    .buses-card {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .buses-card-icon {
+        flex-shrink: 0;
+    }
+}

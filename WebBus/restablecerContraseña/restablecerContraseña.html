@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Restablece tu contraseña de WebBus.">
+    <title>Restablecer Contraseña | WebBus</title>
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../recuperarContraseña/recuperarContraseña.css">
+</head>
+<body class="auth-body">
+
+    <div class="auth-bg"></div>
+    <div class="auth-bg-overlay"></div>
+
+    <div class="auth-wrapper">
+        <main class="auth-panel auth-panel-center">
+            <div class="auth-form-wrap">
+                <a href="../iniciowebbus/index.html" class="auth-brand-logo-center">
+                    <img src="../imagenes/iconoWebBus.png" alt="WebBus Logo">
+                    <span>WebBus</span>
+                </a>
+
+                <div class="auth-form-header">
+                    <h1>Crear nueva contraseña</h1>
+                    <p>Ingresa tu nueva contraseña para restablecer el acceso a tu cuenta.</p>
+                </div>
+
+                <form id="resetPasswordForm" class="auth-form" novalidate>
+                    <div class="wb-form-group">
+                        <label class="wb-label" for="newPassword">Nueva contraseña</label>
+                        <input
+                            class="wb-input"
+                            type="password"
+                            id="newPassword"
+                            placeholder="Mínimo 8 caracteres"
+                            autocomplete="new-password"
+                            required
+                        >
+                    </div>
+
+                    <div class="wb-form-group">
+                        <label class="wb-label" for="confirmPassword">Confirmar contraseña</label>
+                        <input
+                            class="wb-input"
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Repite tu contraseña"
+                            autocomplete="new-password"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="wb-btn wb-btn-primary wb-btn-full auth-submit">
+                        Restablecer Contraseña
+                    </button>
+
+                    <p class="auth-switch">
+                        ¿Recordaste tu contraseña?
+                        <a href="../inicioSesion/inicioSesion.html">Iniciar sesión</a>
+                    </p>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <footer class="wb-footer auth-footer">
+        © 2026 <span>WebBus</span> — Nicole Castilla · Marlon Pertuz · Joshua Castro
+    </footer>
+
+    <script src="restablecerContraseña.js"></script>
+</body>
+</html>

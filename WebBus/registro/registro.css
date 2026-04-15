@@ -1,0 +1,246 @@
+/* ============================================================
+   Registro — registro.css
+   Idéntico en estructura al inicioSesion.css (consistencia)
+   ============================================================ */
+
+.auth-body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-bg {
+    position: fixed;
+    inset: 0;
+    background: url("../imagenes/fondo.png") center/cover no-repeat;
+    opacity: 0.06;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.auth-bg-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(59,130,246,0.08) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.auth-wrapper {
+    display: flex;
+    flex: 1;
+    min-height: calc(100vh - 70px);
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── Panel izquierdo — Branding ─────────────────────────────── */
+.auth-branding {
+    position: relative;
+    width: 52%;
+    flex-shrink: 0;
+    background: linear-gradient(160deg, #0c2a52 0%, #1a4a80 60%, #1565c0 100%);
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: wb-slideInLeft 0.7s ease-out;
+}
+
+.auth-branding::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.auth-branding::after {
+    content: '';
+    position: absolute;
+    bottom: 80px; left: -60px;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.auth-brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    margin-bottom: 60px;
+}
+
+.auth-brand-logo img {
+    width: 52px;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+}
+
+.auth-brand-logo span {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+}
+
+.auth-brand-body { flex: 1; }
+
+.auth-brand-body h2 {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    font-weight: 800;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+.auth-brand-body p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 360px;
+}
+
+.auth-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.auth-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+}
+
+.auth-feature-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #86efac;
+}
+
+.auth-brand-bus {
+    position: absolute;
+    bottom: 0;
+    right: -20px;
+    width: 300px;
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.auth-bus-img { width: 100%; }
+
+/* ─── Panel derecho — Formulario ─────────────────────────────── */
+.auth-panel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: rgba(10, 17, 32, 0.6);
+    backdrop-filter: blur(16px);
+    animation: wb-slideInRight 0.7s ease-out;
+    overflow-y: auto;
+}
+
+.auth-form-wrap {
+    width: 100%;
+    max-width: 420px;
+}
+
+.auth-form-header {
+    margin-bottom: 28px;
+}
+
+.auth-form-header h1 {
+    font-family: var(--font-heading);
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    letter-spacing: -0.4px;
+}
+
+.auth-form-header p {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.auth-submit {
+    padding: 15px;
+    font-size: 15px;
+    border-radius: var(--radius-md);
+    margin-top: 4px;
+    margin-bottom: 24px;
+    gap: 10px;
+}
+
+.auth-switch {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.auth-switch a {
+    color: var(--primary-light);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.auth-switch a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* ─── Footer ─────────────────────────────────────────────────── */
+.auth-footer {
+    position: relative;
+    z-index: 1;
+    padding: 20px 40px;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .auth-wrapper { flex-direction: column; }
+
+    .auth-branding {
+        width: 100%;
+        padding: 28px 30px 40px;
+        min-height: auto;
+    }
+
+    .auth-brand-logo { margin-bottom: 24px; }
+
+    .auth-brand-body h2 { font-size: 26px; }
+
+    .auth-brand-bus { display: none; }
+
+    .auth-panel { padding: 40px 24px; }
+}
+
+@media (max-width: 480px) {
+    .auth-branding { padding: 24px 20px; }
+
+    .auth-features { display: none; }
+
+    .auth-panel { padding: 30px 20px; }
+
+    .auth-form-header h1 { font-size: 24px; }
+}

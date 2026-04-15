@@ -1,0 +1,14 @@
+{
+    "name": "marlonpertuz332max/webbus",
+    "description": "WebBus - Sistema de transporte inteligente para Barranquilla",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "phpmailer/phpmailer": "^6.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "WebBus\\": "WebBus/"
+        }
+    }
+}

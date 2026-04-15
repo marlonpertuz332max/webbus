@@ -1,0 +1,130 @@
+/* ============================================================
+   Recuperar Contraseña — recuperarContraseña.css
+   ============================================================ */
+
+.auth-body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-bg {
+    position: fixed;
+    inset: 0;
+    background: url("../imagenes/fondo.png") center/cover no-repeat;
+    opacity: 0.06;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.auth-bg-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(59,130,246,0.08) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.auth-wrapper {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 70px);
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+}
+
+/* ─── Panel (Centrado sin split screen) ─────────────────────── */
+.auth-panel-center {
+    width: 100%;
+    max-width: 460px;
+    padding: 40px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(16px);
+    animation: wb-fadeInUp 0.6s ease-out;
+}
+
+.auth-brand-logo-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    text-decoration: none;
+}
+
+.auth-brand-logo-center img {
+    width: 44px;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+}
+
+.auth-brand-logo-center span {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+}
+
+.auth-form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-form-header h1 {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    letter-spacing: -0.4px;
+}
+
+.auth-form-header p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.auth-submit {
+    padding: 14px;
+    font-size: 14px;
+    border-radius: var(--radius-md);
+    margin-top: 10px;
+    margin-bottom: 24px;
+}
+
+.auth-switch {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.auth-switch a {
+    color: var(--primary-light);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.auth-switch a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.auth-footer {
+    position: relative;
+    z-index: 1;
+    padding: 20px 40px;
+}
+
+@media (max-width: 480px) {
+    .auth-panel-center {
+        padding: 30px 20px;
+    }
+}

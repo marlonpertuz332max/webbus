@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ruta La Central</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <link rel="stylesheet" href="../global.css">
+        <link rel="stylesheet" href="../navbar.css">
+        <link rel="stylesheet" href="../rutasCompartido.css">
+    </head>
+    
+    <body>
+                <header class="navbar">
+            <a href="../bienvenidaUsuario/bienvenidaUsuario.html" class="logo-area">
+                <img src="../imagenes/iconoWebBus.png" alt="logo WebBus">
+                <div>
+                    <h1>WebBus</h1>
+                    <p>Transporte inteligente en Barranquilla</p>
+                </div>
+            </a>
+            <nav class="nav-menu">
+                <a href="../bienvenidaUsuario/bienvenidaUsuario.html" class="nav-link">Inicio</a>
+                <a href="../busesDisponible/busesDisponible.html" class="nav-link">Rutas</a>
+                <a href="../paradasDisponiblesUsuario/paradaDisponiblesUsuario.html" class="nav-link">Paradas</a>
+                <a href="../planificarTuViajeUsuario/planificarTuViajeUsuario.html" class="nav-link">Planificar Viaje</a>
+                <a href="../estadoDelServicioUsuario/estadoDelServicio.html" class="nav-link">Estado</a>
+                <div class="nav-separator"></div>
+                <div class="user-profile" id="userProfileBtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <div class="user-info">
+                        <p class="user-name" id="userName">Usuario</p>
+                        <p class="user-status">Activo</p>
+                    </div>
+                    <span class="user-dropdown-icon">?</span>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="#perfil">Ver Perfil</a>
+                        <button class="btn-logout" id="btnLogout">Cerrar Sesi�n</button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <!-- MAPA FULL -->
+         <div class="ruta-detalle-layout">
+            <div class="ruta-mapa-container">
+                <div id="mapa"></div>
+            </div>
+            <div class="ruta-info">
+            <h2>Recorrido Ruta La Central</h2>
+            <p>
+                NEVADA CORREGIMIENTO DE CARACOLÍ – Vía a Caracolí – Diagonal 18 – Carrera 16 – Calle 11 – 
+                Vía Oriental – SOLEDAD – Autopista al Aeropuerto – Carrera 19 – Calle 21 – Carrera 16 – 
+                Calle 18 – BARRANQUILLA – Calle 17 – Carrera 38 – Calle 32 – Carrera 40 – Calle 42 – 
+                Carrera 38 – Calle 50 – Carrera 45 – Calle 53 – Carrera 54 – Calle 58 – Universidad Simón Bolívar – 
+                Calle 59 – Carrera 54 – Calle 54 – Carrera 41 – Calle 42 – Carrera 40 – Calle 33 – Carrera 38 – 
+                Calle 17 –  SOLEDAD – Calle 18 – Carrera 19 – Autopista al Aeropuerto – MALAMBO – Vía Oriental – 
+                Calle 10 – Carrera 14 – Diagonal 18 – Vía a Caracolí – NEVADA CORREGIMIENTO DE CARACOLÍ
+            </p>
+        </div>
+        </div>
+
+        <!-- Leaflet PRIMERO -->
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <!-- Luego Routing -->
+        <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+        <script src="rutaLaCentral.js"></script>
+        
+        <footer class="wb-footer">
+            � 2026 <span>WebBus</span> � Nicole Castilla � Marlon Pertuz � Joshua Castro
+        </footer>
+        <script src="../userProfile.js"></script>
+</body>
+</html>
+
+
+
+

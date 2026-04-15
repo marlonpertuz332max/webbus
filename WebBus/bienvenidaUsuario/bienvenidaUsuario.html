@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel principal de WebBus. Consulta rutas, paradas, planifica tu viaje y más.">
+    <title>WebBus | Inicio</title>
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../navbar.css">
+    <link rel="stylesheet" href="bienvenidaUsuario.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="./bienvenidaUsuario.html" class="logo-area">
+            <img src="../imagenes/iconoWebBus.png" alt="logo WebBus">
+            <div>
+                <h1>WebBus</h1>
+                <p>Transporte inteligente en Barranquilla</p>
+            </div>
+        </a>
+        <nav class="nav-menu">
+            <a href="./bienvenidaUsuario.html" class="nav-link active" data-page="bienvenida">Inicio</a>
+            <a href="../busesDisponible/busesDisponible.html" class="nav-link" data-page="buses">Rutas</a>
+            <a href="../paradasDisponiblesUsuario/paradaDisponiblesUsuario.html" class="nav-link" data-page="paradas">Paradas</a>
+            <a href="../planificarTuViajeUsuario/planificarTuViajeUsuario.html" class="nav-link" data-page="planificar">Planificar Viaje</a>
+            <a href="../estadoDelServicioUsuario/estadoDelServicio.html" class="nav-link" data-page="estado">Estado</a>
+            <div class="nav-separator"></div>
+            <div class="user-profile" id="userProfileBtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div class="user-info">
+                    <p class="user-name" id="userName">Usuario</p>
+                    <p class="user-status">Activo</p>
+                </div>
+                <span class="user-dropdown-icon">▼</span>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#perfil">Ver Perfil</a>
+                    <button class="btn-logout" id="btnLogout">Cerrar Sesión</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="bv-main">
+        <!-- Saludo -->
+        <section class="bv-hero">
+            <div class="bv-hero-content">
+                <h1>¡Bienvenido, <span id="greetName">Usuario</span>! 👋</h1>
+                <p>¿A dónde vas hoy? Usa las herramientas de abajo para planificar tu viaje.</p>
+            </div>
+        </section>
+
+        <!-- Cards de funciones -->
+        <section class="bv-cards-section">
+            <div class="bv-cards">
+
+                <a href="../busesDisponible/busesDisponible.html" class="wb-card bv-card">
+                    <div class="bv-card-icon bv-icon-blue">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <div class="bv-card-body">
+                        <h3>Ver rutas</h3>
+                        <p>Consulta las rutas de todas las empresas de transporte de Barranquilla.</p>
+                    </div>
+                    <span class="bv-card-arrow">→</span>
+                </a>
+
+                <a href="../paradasDisponiblesUsuario/paradaDisponiblesUsuario.html" class="wb-card bv-card">
+                    <div class="bv-card-icon bv-icon-purple">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="bv-card-body">
+                        <h3>Paradas cercanas</h3>
+                        <p>Encuentra las paradas de buses más cercanas a tu ubicación.</p>
+                    </div>
+                    <span class="bv-card-arrow">→</span>
+                </a>
+
+                <a href="../planificarTuViajeUsuario/planificarTuViajeUsuario.html" class="wb-card bv-card">
+                    <div class="bv-card-icon bv-icon-green">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M3 12h18M3 6h18M3 18h12"/><circle cx="19" cy="18" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="bv-card-body">
+                        <h3>Planificar viaje</h3>
+                        <p>Diseña la mejor ruta desde tu punto de origen hasta tu destino.</p>
+                    </div>
+                    <span class="bv-card-arrow">→</span>
+                </a>
+
+                <a href="../estadoDelServicioUsuario/estadoDelServicio.html" class="wb-card bv-card">
+                    <div class="bv-card-icon bv-icon-orange">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <div class="bv-card-body">
+                        <h3>Estado del servicio</h3>
+                        <p>Consulta el estado actual del servicio de cada operador en tiempo real.</p>
+                    </div>
+                    <span class="bv-card-arrow">→</span>
+                </a>
+
+                <a href="../historialDeViajesUsuario/historialDeViajes.html" class="wb-card bv-card">
+                    <div class="bv-card-icon bv-icon-teal">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <div class="bv-card-body">
+                        <h3>Historial de viajes</h3>
+                        <p>Revisa tus viajes anteriores y las rutas que más usas.</p>
+                    </div>
+                    <span class="bv-card-arrow">→</span>
+                </a>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="wb-footer">
+        © 2026 <span>WebBus</span> — Nicole Castilla · Marlon Pertuz · Joshua Castro
+    </footer>
+
+    <script src="../userProfile.js"></script>
+</body>
+</html>

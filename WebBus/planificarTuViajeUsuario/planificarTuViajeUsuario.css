@@ -1,0 +1,198 @@
+/* ============================================================
+   Planificar Viaje — planificarTuViajeUsuario.css
+   ============================================================ */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    padding: 0 40px 60px;
+}
+
+/* ─── Layout: formulario + mapa ──────────────────────────────── */
+.contenedor-paradas {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: wb-fadeInUp 0.6s ease-out;
+}
+
+/* ─── Formulario ─────────────────────────────────────────────── */
+.formulario {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    backdrop-filter: blur(12px);
+    text-align: left;
+}
+
+.formulario h2 {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    letter-spacing: -0.3px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.campo label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 0.3px;
+}
+
+.campo input,
+.campo select {
+    padding: 12px 14px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1.5px solid rgba(59, 130, 246, 0.2);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-family: var(--font-body);
+    outline: none;
+    transition: var(--transition);
+}
+
+.campo input::placeholder { color: var(--text-muted); }
+
+.campo input:focus,
+.campo select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    background: rgba(15, 23, 42, 0.8);
+}
+
+.campo select option {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+/* Fila de fecha/hora */
+.fila {
+    flex-direction: row !important;
+    gap: 12px !important;
+}
+
+.fila > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.fila > div label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* Botón buscar */
+.btn-buscar {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border: none;
+    border-radius: var(--radius-md);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 6px;
+    font-family: var(--font-body);
+    letter-spacing: 0.3px;
+}
+
+.btn-buscar:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-deeper));
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(59, 130, 246, 0.4);
+}
+
+/* Info de ruta */
+#infoRuta {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    color: var(--primary-light);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ─── Mapa ───────────────────────────────────────────────────── */
+.mapa {
+    height: 100%;
+    min-height: 480px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    border: 1px solid var(--glass-border);
+}
+
+#mapa { height: 100%; width: 100%; }
+
+#fullscreenBtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 9999;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    padding: 9px 14px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    font-family: var(--font-body);
+}
+
+#fullscreenBtn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+.mapa.fullscreen {
+    position: fixed !important;
+    top: 0 !important; left: 0 !important;
+    width: 100vw !important; height: 100vh !important;
+    z-index: 9998 !important;
+    border-radius: 0 !important;
+}
+
+.mapa.fullscreen #mapa { height: 100% !important; }
+.mapa.fullscreen #fullscreenBtn { top: 18px; right: 18px; }
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .contenedor-paradas {
+        grid-template-columns: 1fr;
+    }
+
+    .mapa {
+        min-height: 380px;
+    }
+
+    main { padding: 0 20px 40px; }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Selecciona la empresa de transporte y consulta sus rutas disponibles en Barranquilla.">
+    <title>Empresas de transporte | WebBus</title>
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../navbar.css">
+    <link rel="stylesheet" href="busesDisponible.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="../bienvenidaUsuario/bienvenidaUsuario.html" class="logo-area">
+            <img src="../imagenes/iconoWebBus.png" alt="logo WebBus">
+            <div>
+                <h1>WebBus</h1>
+                <p>Transporte inteligente en Barranquilla</p>
+            </div>
+        </a>
+        <nav class="nav-menu">
+            <a href="../bienvenidaUsuario/bienvenidaUsuario.html" class="nav-link" data-page="bienvenida">Inicio</a>
+            <a href="./busesDisponible.html" class="nav-link active" data-page="buses">Rutas</a>
+            <a href="../paradasDisponiblesUsuario/paradaDisponiblesUsuario.html" class="nav-link" data-page="paradas">Paradas</a>
+            <a href="../planificarTuViajeUsuario/planificarTuViajeUsuario.html" class="nav-link" data-page="planificar">Planificar Viaje</a>
+            <a href="../estadoDelServicioUsuario/estadoDelServicio.html" class="nav-link" data-page="estado">Estado</a>
+            <div class="nav-separator"></div>
+            <div class="user-profile" id="userProfileBtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div class="user-info">
+                    <p class="user-name" id="userName">Usuario</p>
+                    <p class="user-status">Activo</p>
+                </div>
+                <span class="user-dropdown-icon">▼</span>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#perfil">Ver Perfil</a>
+                    <button class="btn-logout" id="btnLogout">Cerrar Sesión</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="buses-main">
+        <div class="wb-page-header">
+            <h1>Elige tu empresa de transporte</h1>
+            <p>Selecciona el operador para consultar sus rutas disponibles en Barranquilla</p>
+        </div>
+
+        <div class="buses-grid">
+
+            <a href="../rutasCoolitoral/rutasDisponiblesCoolitoral.html" class="wb-card buses-card">
+                <div class="buses-card-icon buses-icon-1">🚌</div>
+                <div class="buses-card-info">
+                    <h3>Coolitoral</h3>
+                    <p>Transporte urbano en Barranquilla y municipios cercanos.</p>
+                </div>
+                <span class="buses-arrow">Ver rutas →</span>
+            </a>
+
+            <a href="../rutasTransmecar/rutasDisponiblesTransmecar.html" class="wb-card buses-card">
+                <div class="buses-card-icon buses-icon-2">🚌</div>
+                <div class="buses-card-info">
+                    <h3>Transmecar</h3>
+                    <p>Rutas urbanas que conectan los barrios principales de la ciudad.</p>
+                </div>
+                <span class="buses-arrow">Ver rutas →</span>
+            </a>
+
+            <a href="../rutasSobusa/rutasDisponiblesSobusa.html" class="wb-card buses-card">
+                <div class="buses-card-icon buses-icon-3">🚌</div>
+                <div class="buses-card-info">
+                    <h3>Sobusa</h3>
+                    <p>Servicio de buses por zonas residenciales y comerciales.</p>
+                </div>
+                <span class="buses-arrow">Ver rutas →</span>
+            </a>
+
+            <a href="../rutasCarolina/rutasDisponiblesCarolina.html" class="wb-card buses-card">
+                <div class="buses-card-icon buses-icon-4">🚌</div>
+                <div class="buses-card-info">
+                    <h3>La Carolina</h3>
+                    <p>Empresa tradicional de transporte urbano con amplia cobertura.</p>
+                </div>
+                <span class="buses-arrow">Ver rutas →</span>
+            </a>
+
+            <a href="../rutasBostonBoston/rutasDisponiblesBostonBoston.html" class="wb-card buses-card">
+                <div class="buses-card-icon buses-icon-5">🚌</div>
+                <div class="buses-card-info">
+                    <h3>Boston Express</h3>
+                    <p>Servicios de transporte urbano en toda la ciudad.</p>
+                </div>
+                <span class="buses-arrow">Ver rutas →</span>
+            </a>
+
+            <a href="../rutasCoochofal/rutasDisponiblesCoochofal.html" class="wb-card buses-card">
+                <div class="buses-card-icon buses-icon-6">🚌</div>
+                <div class="buses-card-info">
+                    <h3>Coochofal</h3>
+                    <p>Rutas hacia Barranquilla y zonas cercanas del área metropolitana.</p>
+                </div>
+                <span class="buses-arrow">Ver rutas →</span>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="wb-footer">
+        © 2026 <span>WebBus</span> — Nicole Castilla · Marlon Pertuz · Joshua Castro
+    </footer>
+
+    <script src="../userProfile.js"></script>
+</body>
+</html>

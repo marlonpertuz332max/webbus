@@ -1,0 +1,12 @@
+.git
+.vscode
+.dockerignore
+docker-compose.yml
+PHPMailer.zip
+design
+docs
+*.md
+*.log
+composer-setup.php
+test_*.php
+recovery_logs_viewer.php

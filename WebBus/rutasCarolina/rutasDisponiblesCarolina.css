@@ -1,0 +1,108 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#0b2a4a;
+    color:white;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    align-items:center;
+    padding:15px 40px;
+    background:linear-gradient(90deg,#2a6fb3,#3f8dd0);
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-area img{
+    width:60px;
+}
+
+.logo-area h1{
+    font-size:28px;
+}
+
+.logo-area p{
+    font-size:13px;
+    opacity:0.9;
+}
+
+/* MAIN */
+main{
+    padding:40px;
+    flex:1;
+    text-align:center;
+}
+
+main h1{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.subtitulo{
+    margin-bottom:30px;
+    color:#cbd6e2;
+}
+
+/* GRID */
+.contenedor{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr); 
+    gap:25px;
+    max-width:1100px;
+    margin:auto;
+}
+
+/* TARJETAS */
+.card{
+    background:#4a8fc5;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.4);
+    text-align:left;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h2{
+    margin-bottom:15px;
+}
+
+/* BOTÓN */
+.btn{
+    background:#4CAF50;
+    border:none;
+    color:white;
+    padding:10px 15px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#3e9443;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    font-size:14px;
+    color:#cbd6e2;
+}

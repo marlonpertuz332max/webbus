@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ruta Granabastos 14 - 15</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <link rel="stylesheet" href="../global.css">
+        <link rel="stylesheet" href="../navbar.css">
+        <link rel="stylesheet" href="../rutasCompartido.css">
+    </head>
+    
+    <body>
+                <header class="navbar">
+            <a href="../bienvenidaUsuario/bienvenidaUsuario.html" class="logo-area">
+                <img src="../imagenes/iconoWebBus.png" alt="logo WebBus">
+                <div>
+                    <h1>WebBus</h1>
+                    <p>Transporte inteligente en Barranquilla</p>
+                </div>
+            </a>
+            <nav class="nav-menu">
+                <a href="../bienvenidaUsuario/bienvenidaUsuario.html" class="nav-link">Inicio</a>
+                <a href="../busesDisponible/busesDisponible.html" class="nav-link">Rutas</a>
+                <a href="../paradasDisponiblesUsuario/paradaDisponiblesUsuario.html" class="nav-link">Paradas</a>
+                <a href="../planificarTuViajeUsuario/planificarTuViajeUsuario.html" class="nav-link">Planificar Viaje</a>
+                <a href="../estadoDelServicioUsuario/estadoDelServicio.html" class="nav-link">Estado</a>
+                <div class="nav-separator"></div>
+                <div class="user-profile" id="userProfileBtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <div class="user-info">
+                        <p class="user-name" id="userName">Usuario</p>
+                        <p class="user-status">Activo</p>
+                    </div>
+                    <span class="user-dropdown-icon">?</span>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="#perfil">Ver Perfil</a>
+                        <button class="btn-logout" id="btnLogout">Cerrar Sesi�n</button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <!-- MAPA FULL -->
+         <div class="ruta-detalle-layout">
+            <div class="ruta-mapa-container">
+                <div id="mapa"></div>
+            </div>
+            <div class="ruta-info">
+            <h2>Recorrido Ruta Granabastos 14 - 15</h2>
+            <p>
+                NEVADA – Granabastos  – Avenida Murillo – Avenida Circunvalar – Boulevard de Simón Bolívar – 
+                Calle 17 – Carrera 15 – Calle 30 – Carrera 14 – Calle 60 – Carrera 20 – Calle 53D – Carrera 25 – 
+                Calle 57 – Carrera 27 – Calle 74B – Carrera 26C7 – Calle 79A – Carrera 33 – Calle 76 – 
+                Carrera 42F – Calle 79 – Carrera 43 – Calle 93 – Hotel Movich – Calle 94 – Carrera 53 – Calle 98 – 
+                Carrera 51B – Corredor Universitario – Corregimiento La Playa – Calle 14 – Carrera 10 – 
+                Adelita de Char – Calle 22 – Carrera 20 – Calle 20 – Carrera 17C – Calle 19 – Carrera 13 – 
+                Calle 17 – Carrera 10 – Calle 14 – Corredor Universitario – Carrera 51B – Calle 96 – Carrera 47 – 
+                Calle 93 – Carrera 49C – Calle 82 – Carrera 42F – Calle 76 – Carrera 38 – Calle 79A – Carrera 26C7 – 
+                Calle 74 – Carrera 27 – Calle 57 – Carrera 25 – Calle 53D – Carrera 20 – Calle 60 – Carrera 14 – 
+                Calle 30 – Carrera 15 – Calle 17 – Boulevard de Simón Bolívar –  Avenida Circunvalar – 
+                Avenida Murillo – Granabastos – NEVADA
+            </p>
+        </div>
+        </div>
+
+        <!-- Leaflet PRIMERO -->
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <!-- Luego Routing -->
+        <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+        <script src="rutaGranabastos14-15.js"></script>
+        
+        <footer class="wb-footer">
+            � 2026 <span>WebBus</span> � Nicole Castilla � Marlon Pertuz � Joshua Castro
+        </footer>
+        <script src="../userProfile.js"></script>
+</body>
+</html>
+
+
+
+
