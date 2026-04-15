@@ -144,5 +144,30 @@ main {
         height: 400px;
     }
     
-    main { padding: 0 20px 40px; }
+    main { padding: 0 24px 40px; }
+}
+
+@media (max-width: 600px) {
+    main { padding: 0 20px 30px; }
+    
+    .rutas-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ruta-card {
+        padding: 20px;
+        gap: 12px;
+    }
+
+    .ruta-card h2 {
+        font-size: 16px;
+    }
+    
+    .ruta-info {
+        padding: 20px;
+    }
+    
+    .ruta-mapa-container {
+        height: 350px;
+    }
 }
