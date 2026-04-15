@@ -498,7 +498,44 @@
         flex-direction: column;
     }
 
+    /* Mejora header en celular */
+    .wb-header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px 15px;
+    }
+
+    .wb-header-actions {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .wb-header-actions .wb-btn {
+        flex: 1;
+        text-align: center;
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
     .wb-logo span {
-        font-size: 20px;
+        font-size: 22px;
+    }
+
+    /* Mejora CTA Final en celular */
+    .wb-cta {
+        margin: 30px 15px;
+        padding: 40px 20px;
+    }
+    
+    .wb-cta h2 {
+        font-size: 22px;
+    }
+    
+    .wb-cta .wb-btn-lg {
+        padding: 14px 16px;
+        font-size: 14px;
+        width: 100%;
+        display: block;
     }
 }
