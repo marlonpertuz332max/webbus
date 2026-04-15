@@ -1,6 +1,177 @@
 /* Importar sistema global de WebBus */
 @import url('../global.css');
 
+/* ─── Hamburger Button ──────────────────────────────────────── */
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1.5px solid rgba(59, 130, 246, 0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    z-index: 1100;
+}
+
+.hamburger-btn:hover {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(96, 165, 250, 0.4);
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 2px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+/* Animación X al abrir */
+.hamburger-btn.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger-btn.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.hamburger-btn.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ─── Mobile Nav Overlay ────────────────────────────────────── */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-overlay.visible {
+    opacity: 1;
+}
+
+/* ─── Mobile Drawer ─────────────────────────────────────────── */
+.mobile-drawer {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    height: 100vh;
+    background: linear-gradient(160deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.98) 100%);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: -20px 0 50px rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 80px 24px 40px;
+    flex-direction: column;
+    gap: 6px;
+    overflow-y: auto;
+}
+
+.mobile-drawer.open {
+    right: 0;
+}
+
+.mobile-drawer a,
+.mobile-drawer button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.25s ease;
+    width: 100%;
+    text-align: left;
+}
+
+.mobile-drawer a:hover,
+.mobile-drawer button:hover {
+    background: rgba(59, 130, 246, 0.15);
+    color: white;
+    padding-left: 22px;
+}
+
+.mobile-drawer a.active {
+    background: rgba(59, 130, 246, 0.2);
+    color: white;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.mobile-drawer-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+    margin: 12px 0;
+}
+
+.mobile-drawer-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.15);
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.mobile-drawer-user .user-avatar-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+}
+
+.mobile-drawer-user .user-name-sm {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+
+.mobile-drawer-user .user-status-sm {
+    font-size: 11px;
+    color: rgba(96, 165, 250, 0.8);
+}
+
+.mobile-drawer .btn-logout-mobile {
+    color: rgba(248, 113, 113, 0.9) !important;
+    margin-top: 4px;
+}
+
+.mobile-drawer .btn-logout-mobile:hover {
+    background: rgba(239, 68, 68, 0.15) !important;
+    color: #fca5a5 !important;
+}
+
 /* Animaciones */
 @keyframes navSlideDown {
     from {
@@ -325,7 +496,7 @@
 @media (max-width: 768px) {
     .navbar {
         padding: 14px 25px;
-        gap: 15px;
+        justify-content: space-between;
     }
 
     .logo-area img {
@@ -341,125 +512,12 @@
     }
 
     .nav-menu {
-        width: 100%;
-        flex-wrap: wrap;
-        justify-content: center;
-        order: 3;
-        gap: 3px;
-    }
-
-    .nav-menu a {
-        padding: 8px 14px;
-        font-size: 12px;
-        border-radius: 5px;
-    }
-
-    .nav-separator {
-        margin: 0 8px;
-        height: 24px;
-    }
-
-    .user-profile {
-        padding: 9px 12px;
-        gap: 8px;
-    }
-
-    .user-avatar {
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
-    }
-
-    .user-name {
-        font-size: 12px;
-    }
-
-    .user-status {
-        font-size: 10px;
         display: none;
     }
 
-    .dropdown-menu {
-        min-width: 180px;
-    }
-
-    .btn-logout {
-        padding: 9px 18px;
-        font-size: 12px;
-        border-radius: 6px;
+    .hamburger-btn {
+        display: flex;
     }
 }
 
-@media (max-width: 480px) {
-    .navbar {
-        padding: 12px 15px;
-        gap: 10px;
-    }
-
-    .logo-area {
-        gap: 8px;
-    }
-
-    .logo-area img {
-        width: 38px;
-    }
-
-    .logo-area h1 {
-        font-size: 16px;
-    }
-
-    .nav-menu {
-        gap: 2px;
-    }
-
-    .nav-menu a {
-        padding: 6px 12px;
-        font-size: 11px;
-        border-radius: 4px;
-    }
-
-    .nav-menu a::before {
-        height: 1.5px;
-    }
-
-    .user-profile {
-        padding: 8px 10px;
-        gap: 6px;
-        border-radius: 40px;
-    }
-
-    .user-avatar {
-        width: 28px;
-        height: 28px;
-        font-size: 12px;
-    }
-
-    .user-name {
-        font-size: 11px;
-    }
-
-    .user-dropdown-icon {
-        font-size: 10px;
-    }
-
-    .dropdown-menu {
-        min-width: 160px;
-        right: -10px;
-    }
-
-    .dropdown-menu a,
-    .dropdown-menu button {
-        padding: 10px 14px;
-        font-size: 12px;
-    }
-
-    .btn-logout {
-        padding: 8px 14px;
-        font-size: 11px;
-        border-radius: 5px;
-    }
-
-    .nav-separator {
-        display: none;
-    }
-}
+/* The @media (max-width: 480px) is no longer needed since nav is hidden < 768px */

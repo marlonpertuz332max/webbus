@@ -65,7 +65,12 @@ navigator.geolocation.watchPosition(function(pos) {
     }
 
 }, function(error) {
-    alert("Activa la ubicación para usar el mapa");
+    Swal.fire({
+        icon: 'warning',
+        title: 'Ubicación desactivada',
+        text: 'Activa la ubicación para usar el mapa',
+        confirmButtonColor: '#3b82f6'
+    });
 }, {
     enableHighAccuracy: true
 });
@@ -91,20 +96,45 @@ window.onload = function(){
         let fechaHoraUsuario = new Date(`${fecha}T${hora}`);
         
         if(!fecha || !hora){
-            alert("Debes seleccionar fecha y hora");
+            Swal.fire({
+                icon: 'warning',
+                title: 'Información incompleta',
+                text: 'Debes seleccionar fecha y hora',
+                confirmButtonColor: '#3b82f6'
+            });
             return;
         }
 
         //Si es en el pasado
         if(fechaHoraUsuario < ahora){
-            alert("No puedes seleccionar una fecha u hora pasada");
+            Swal.fire({
+                icon: 'error',
+                title: 'Fecha inválida',
+                text: 'No puedes seleccionar una fecha u hora pasada',
+                confirmButtonColor: '#3b82f6'
+            });
             return;
         }
 
         if(destino === ""){
-            alert("Escribe un destino");
+            Swal.fire({
+                icon: 'warning',
+                title: 'Falta destino',
+                text: 'Escribe un destino',
+                confirmButtonColor: '#3b82f6'
+            });
             return;
         }
+
+        // Mostrar loading con SweetAlert2
+        Swal.fire({
+            title: 'Buscando la mejor ruta...',
+            text: 'Por favor espera un momento',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
 
         // función para buscar coordenadas SOLO en Barranquilla/Soledad
         function buscarLugar(lugar){
@@ -120,7 +150,12 @@ window.onload = function(){
         // ORIGEN OPCIONAL
         if(origen === ""){
             if(miLat === null || miLon === null){
-                alert("Esperando tu ubicación...");
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Ubicación pendiente',
+                    text: 'Esperando tu ubicación...',
+                    confirmButtonColor: '#3b82f6'
+                });
                 return;
             }
 
@@ -136,7 +171,12 @@ window.onload = function(){
         .then(([dataOrigen, dataDestino]) => {
 
             if(dataOrigen.length === 0 || dataDestino.length === 0){
-                alert("No se encontró alguna dirección");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Dirección no encontrada',
+                    text: 'Asegúrate de escribir bien la dirección en Barranquilla/Soledad',
+                    confirmButtonColor: '#3b82f6'
+                });
                 return;
             }
 
@@ -208,12 +248,51 @@ window.onload = function(){
 
                 document.getElementById("infoRuta").innerHTML =
                     `Tiempo: ${minutos} min <br>Distancia: ${km} km`;
+                document.getElementById("infoRuta").style.display = "block";
 
+                // Cerrar loading de SweetAlert2
+                Swal.close();
+
+                // Mostrar éxito con SweetAlert2
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Ruta encontrada!',
+                    html: `Distancia: <b>${km} km</b><br>Tiempo estimado: <b>${minutos} min</b>`,
+                    timer: 3000,
+                    showConfirmButton: false
+                });
+
+                // ESTO ES PARA GUARDAR EN EL HISTORIAL
+                if (typeof guardarViaje === 'function') {
+                    // Usar el valor ingresado de origen o "Mi ubicación"
+                    const origenStr = origen !== "" ? origen : "Mi ubicación";
+                    guardarViaje(origenStr, destino, `${km} km`, `${minutos} min`);
+                }
+
+            });
+
+            // Si hay error en la ruta (no la encuentra)
+            controlRuta.on('routingerror', function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Ruta no encontrada',
+                    text: 'No pudimos trazar una ruta entre estos puntos',
+                    confirmButtonColor: '#3b82f6'
+                });
             });
 
             // NOTIFICACIÓN
             programarNotificacion(fecha, hora, destino);
 
+        })
+        .catch(error => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error de conexión',
+                text: 'Hubo un problema al buscar la ubicación',
+                confirmButtonColor: '#3b82f6'
+            });
+            console.error(error);
         });
 
     });

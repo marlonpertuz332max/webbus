@@ -1,6 +1,7 @@
 <?php
 // Evitar que cualquier error previo rompa el JSON
 ob_start();
+session_start(); // Iniciar sesión para rate limiting
 
 // === CORS HEADERS ===
 header('Content-Type: application/json; charset=utf-8');
@@ -13,6 +14,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     ob_end_clean();
     exit;
+}
+
+// === RATE LIMITING (Máximo 5 intentos fallidos en 15 minutos) ===
+$max_intentos = 5;
+$tiempo_bloqueo = 15 * 60; // 15 minutos en segundos
+
+if (isset($_SESSION['login_attempts']) && $_SESSION['login_attempts'] >= $max_intentos) {
+    $tiempo_transcurrido = time() - $_SESSION['last_attempt_time'];
+    if ($tiempo_transcurrido < $tiempo_bloqueo) {
+        $minutos_restantes = ceil(($tiempo_bloqueo - $tiempo_transcurrido) / 60);
+        http_response_code(429); // Too Many Requests
+        echo json_encode(['error' => "Demasiados intentos fallidos. Intenta de nuevo en $minutos_restantes minutos."]);
+        ob_end_flush();
+        exit;
+    } else {
+        // Resetear intentos si ya pasó el tiempo de bloqueo
+        $_SESSION['login_attempts'] = 0;
+    }
 }
 
 try {
@@ -42,6 +61,7 @@ try {
         $password = trim($data['password'] ?? '');
         
         if (empty($correo) || empty($password)) {
+            registrarErrorLogin();
             throw new Exception('Correo y contraseña son requeridos');
         }
         
@@ -52,6 +72,7 @@ try {
         $result = $stmt->get_result();
         
         if ($result->num_rows === 0) {
+            registrarErrorLogin();
             http_response_code(401);
             echo json_encode(['error' => 'Correo o contraseña incorrectos']);
             exit;
@@ -61,12 +82,14 @@ try {
         
         // Verificar contraseña
         if (!password_verify($password, $usuario['password'])) {
+            registrarErrorLogin();
             http_response_code(401);
             echo json_encode(['error' => 'Correo o contraseña incorrectos']);
             exit;
         }
         
         // Login exitoso
+        $_SESSION['login_attempts'] = 0; // Resetear intentos al tener éxito
         echo json_encode([
             'success' => true,
             'message' => 'Login exitoso',
@@ -88,5 +111,14 @@ try {
         'error' => $e->getMessage(),
         'trace' => 'Error en login.php'
     ]);
+}
+
+// Función auxiliar para registrar intentos fallidos
+function registrarErrorLogin() {
+    if (!isset($_SESSION['login_attempts'])) {
+        $_SESSION['login_attempts'] = 0;
+    }
+    $_SESSION['login_attempts']++;
+    $_SESSION['last_attempt_time'] = time();
 }
 ?>
