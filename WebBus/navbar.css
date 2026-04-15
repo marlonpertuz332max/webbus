@@ -518,6 +518,10 @@
     .hamburger-btn {
         display: flex;
     }
+
+    .mobile-drawer {
+        display: flex;
+    }
 }
 
 /* The @media (max-width: 480px) is no longer needed since nav is hidden < 768px */
