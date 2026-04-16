@@ -262,30 +262,35 @@ button, input, select, textarea { font-family: inherit; }
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .input-password-wrap .wb-input {
-  padding-right: 46px;
+  padding-right: 46px !important;
   width: 100%;
   box-sizing: border-box;
 }
 
-.eye-btn {
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
+.input-password-wrap .eye-btn {
+  position: absolute !important;
+  right: 14px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
   cursor: pointer;
   color: rgba(255, 255, 255, 0.45);
-  padding: 0;
+  padding: 8px !important;
+  margin: 0 !important;
   display: flex;
   align-items: center;
+  justify-content: center;
+  z-index: 10;
   transition: color 0.2s;
 }
 
-.eye-btn:hover {
+.input-password-wrap .eye-btn:hover {
   color: rgba(255, 255, 255, 0.85);
 }
 
