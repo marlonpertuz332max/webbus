@@ -46,14 +46,14 @@ document.addEventListener('DOMContentLoaded', function() {
     fileInputTag.style.display = 'none';
     document.body.appendChild(fileInputTag);
 
-    // Cuando detectemos un click en los botones/links de perfil
-    document.body.addEventListener('click', (e) => {
+    // Cuando detectemos un click en los botones/links de perfil (Fase de captura = inbloqueable)
+    window.addEventListener('click', (e) => {
         const target = e.target.closest('a[href="#perfil"]');
         if (target) {
             e.preventDefault();
             fileInputTag.click(); // Abrir selector de archivos
         }
-    });
+    }, true);
 
     // Procesar la foto seleccionada
     fileInputTag.addEventListener('change', function(e) {
