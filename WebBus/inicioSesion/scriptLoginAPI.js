@@ -69,6 +69,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 localStorage.setItem('nombreUsuario', resultado.usuario.nombre);
                 localStorage.setItem('emailUsuario', resultado.usuario.correo);
                 
+                if (resultado.usuario.foto_perfil) {
+                    localStorage.setItem('fotoPerfil', resultado.usuario.foto_perfil);
+                } else {
+                    localStorage.removeItem('fotoPerfil');
+                }
+                
                 mostrarExito('¡Sesión iniciada correctamente!');
                 setTimeout(() => {
                     window.location.href = '../bienvenidaUsuario/bienvenidaUsuario.html';

@@ -66,7 +66,7 @@ try {
         }
         
         // Buscar usuario por correo
-        $stmt = $conexion->prepare("SELECT id_usuario, nombre, correo, password FROM usuarios WHERE correo = ?");
+        $stmt = $conexion->prepare("SELECT id_usuario, nombre, correo, password, foto_perfil FROM usuarios WHERE correo = ?");
         $stmt->bind_param("s", $correo);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -96,7 +96,8 @@ try {
             'usuario' => [
                 'id' => $usuario['id_usuario'],
                 'nombre' => $usuario['nombre'],
-                'correo' => $usuario['correo']
+                'correo' => $usuario['correo'],
+                'foto_perfil' => $usuario['foto_perfil']
             ]
         ]);
     } else {
