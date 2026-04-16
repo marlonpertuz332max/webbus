@@ -8,24 +8,7 @@ const EMAILJS_CONFIG = {
     TEMPLATE_ID: 'template_mduf3v1'
 };
 
-// Esperar a que EmailJS esté disponible
-let emailjsReady = false;
-function initializeEmailJS() {
-    if (typeof emailjs !== 'undefined') {
-        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-        emailjsReady = true;
-        console.log('✅ EmailJS inicializado correctamente');
-    } else {
-        console.log('⏳ Esperando a EmailJS...');
-        setTimeout(initializeEmailJS, 100);
-    }
-}
-
-// Intentar inicializar inmediatamente
-initializeEmailJS();
-
-// También intentar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', initializeEmailJS);
+emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
 
 // ============================================
 // FUNCIONES DE UTILIDAD
@@ -180,26 +163,6 @@ if (enviar && correo) {
             enviar.style.cursor = 'pointer';
             enviar.textContent = originalText;
             return;
-        }
-
-        // Verificar que EmailJS está listo
-        if (!emailjsReady) {
-            showNotification('EmailJS no está disponible. Intentando nuevamente...', 'loading');
-            // Esperar a que EmailJS esté listo
-            let attempts = 0;
-            while (!emailjsReady && attempts < 30) {
-                await new Promise(resolve => setTimeout(resolve, 100));
-                attempts++;
-            }
-            
-            if (!emailjsReady) {
-                showNotification('Error: EmailJS no se puede cargar. Intenta nuevamente.', 'error');
-                enviar.disabled = false;
-                enviar.style.opacity = '1';
-                enviar.style.cursor = 'pointer';
-                enviar.textContent = originalText;
-                return;
-            }
         }
 
         // Si el servidor retorna datos, proceder a enviar correo con EmailJS
