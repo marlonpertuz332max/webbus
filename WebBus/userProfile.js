@@ -170,6 +170,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
             document.body.insertAdjacentHTML('beforeend', mobileHTML);
+            
+            // Volver a llamar la actualización de avatares para que repinte el user-avatar-sm que acabamos de inyectar
+            if (typeof updateAvatarsUI === 'function') {
+                updateAvatarsUI(localStorage.getItem('fotoPerfil'));
+            }
         }
 
         const hamburgerBtn = document.querySelector('.hamburger-btn');
