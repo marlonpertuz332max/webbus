@@ -257,6 +257,11 @@ button, input, select, textarea { font-family: inherit; }
   box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
 }
 
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
 /* ─── Toggle mostrar/ocultar contraseña ──────────────────────── */
 .input-password-wrap {
   position: relative;
