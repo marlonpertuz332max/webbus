@@ -51,18 +51,6 @@ navigator.geolocation.watchPosition(function(pos) {
             .openPopup();
     }
 
-    // ACTUALIZAR RUTA EN TIEMPO REAL
-    if(controlRuta){
-        let destinoActual = controlRuta.getWaypoints()[1];
-
-        if(destinoActual && destinoActual.latLng){
-            controlRuta.setWaypoints([
-                L.latLng(miLat, miLon),
-                destinoActual.latLng
-            ]);
-        }
-    }
-
 }, function(error) {
     Swal.fire({
         icon: 'warning',
@@ -235,7 +223,7 @@ window.onload = function(){
             ]);
 
             // TIEMPO Y DISTANCIA
-            controlRuta.on('routesfound', function(e){
+            controlRuta.once('routesfound', function(e){
 
                 let ruta = e.routes[0];
 
