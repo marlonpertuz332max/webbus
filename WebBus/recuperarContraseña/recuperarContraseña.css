@@ -123,34 +123,6 @@
     padding: 20px 40px;
 }
 
-.input-password-wrap {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.input-password-wrap .wb-input {
-    padding-right: 46px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.eye-btn {
-    position: absolute;
-    right: 14px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: rgba(255, 255, 255, 0.45);
-    padding: 0;
-    display: flex;
-    align-items: center;
-    transition: color 0.2s;
-}
-
-.eye-btn:hover {
-    color: rgba(255, 255, 255, 0.85);
-}
 
 @media (max-width: 480px) {
     .auth-panel-center {

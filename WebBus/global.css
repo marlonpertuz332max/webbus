@@ -257,6 +257,36 @@ button, input, select, textarea { font-family: inherit; }
   box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
 }
 
+/* ─── Toggle mostrar/ocultar contraseña ──────────────────────── */
+.input-password-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-password-wrap .wb-input {
+  padding-right: 46px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.45);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.eye-btn:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
 /* ─── Badges ─────────────────────────────────────────────────── */
 .wb-badge {
   display: inline-flex;
