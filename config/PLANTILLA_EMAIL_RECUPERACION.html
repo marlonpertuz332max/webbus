@@ -4,7 +4,9 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Recuperación de contraseña – WebBus</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --navy:    #050f2c;
@@ -17,74 +19,52 @@
       --slate:   #4a5771;
       --muted:   #8a95a8;
       --rule:    #e4e9f2;
-      --bg:      #f5f7fb;
+      --bg:      #eef1f8;
       --white:   #ffffff;
     }
 
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background: var(--bg);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       -webkit-font-smoothing: antialiased;
       padding: 48px 16px;
       color: var(--ink);
     }
 
     .email-wrap {
-      max-width: 580px;
+      max-width: 600px;
       margin: 0 auto;
     }
 
-    /* ─────────────────────────────────────
-       PRE-HEADER — thin top bar
-    ───────────────────────────────────── */
     .pre-header {
       text-align: right;
       font-size: 11px;
       color: var(--muted);
-      letter-spacing: 0.3px;
-      margin-bottom: 10px;
+      letter-spacing: 0.4px;
+      margin-bottom: 12px;
       padding-right: 4px;
     }
 
-    /* ─────────────────────────────────────
-       CARD
-    ───────────────────────────────────── */
+    /* ── Card ── */
     .card {
       background: var(--white);
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
       box-shadow:
-        0 1px 3px rgba(5,15,44,0.06),
-        0 8px 32px rgba(5,15,44,0.09),
-        0 32px 64px rgba(5,15,44,0.06);
+        0 2px 6px rgba(5,15,44,0.06),
+        0 12px 40px rgba(5,15,44,0.10),
+        0 40px 80px rgba(5,15,44,0.07);
     }
 
-    /* ─────────────────────────────────────
-       HEADER
-    ───────────────────────────────────── */
+    /* ── Header ── */
     .hd {
       position: relative;
-      background: var(--navy);
-      padding: 0;
+      background: linear-gradient(145deg, #030c22 0%, #0a2560 45%, #050f2c 100%);
       overflow: hidden;
     }
 
-    /* Imagen de fondo ciudad */
-    .hd-bg {
-      position: absolute; inset: 0;
-      background:
-        /* overlay que oscurece la imagen y añade el tinte azul profundo */
-        linear-gradient(160deg,
-          rgba(5,15,44,0.82) 0%,
-          rgba(10,40,100,0.65) 40%,
-          rgba(5,15,44,0.90) 100%);
-      /* Si tienes la imagen hosteada, pon aquí la URL:
-         background-image: url('TU_URL_AQUI'), linear-gradient(...) */
-    }
-
-    /* Líneas de ruta sutiles — evoca las trazas del fondo */
     .hd-routes {
       position: absolute; inset: 0;
       overflow: hidden;
@@ -93,171 +73,155 @@
     .hd-routes svg {
       position: absolute;
       bottom: -10px; left: 0;
-      width: 100%; opacity: 0.18;
+      width: 100%; opacity: 0.15;
     }
 
-    /* Puntos de luz — muy sutiles */
-    .hd-dots {
-      position: absolute; inset: 0;
-      pointer-events: none;
-    }
-    .hd-dots i {
+    .hd-glow {
       position: absolute;
-      width: 2px; height: 2px;
-      background: #7dd3fc;
-      border-radius: 50%;
-      opacity: 0;
-      animation: twk var(--d, 4s) var(--dl, 0s) ease-in-out infinite;
-    }
-    @keyframes twk {
-      0%,100%{ opacity:0; }
-      50%{ opacity: var(--op, 0.7); }
+      top: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 340px; height: 200px;
+      background: radial-gradient(ellipse, rgba(46,141,232,0.22) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .hd-inner {
       position: relative;
       z-index: 2;
-      padding: 40px 48px 36px;
+      padding: 44px 52px 36px;
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 22px;
     }
 
-    /* Logo SVG */
     .hd-logo {
       flex-shrink: 0;
-      width: 56px; height: 66px;
-      filter: drop-shadow(0 4px 16px rgba(34,168,75,0.45));
+      width: 58px; height: 68px;
+      filter: drop-shadow(0 4px 18px rgba(34,168,75,0.50));
     }
 
-    .hd-brand {}
     .hd-brand-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 28px;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 30px;
       font-weight: 400;
       color: var(--white);
-      letter-spacing: -0.3px;
+      letter-spacing: -0.4px;
       line-height: 1;
     }
     .hd-brand-line {
-      font-size: 11.5px;
-      font-weight: 400;
-      color: rgba(180,210,255,0.55);
-      letter-spacing: 1.8px;
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(180,210,255,0.50);
+      letter-spacing: 2px;
       text-transform: uppercase;
-      margin-top: 5px;
+      margin-top: 6px;
     }
 
-    /* Divisor horizontal dentro del header */
-    .hd-rule {
+    .hd-divider {
       position: relative; z-index: 2;
       height: 1px;
+      margin: 0 52px;
       background: linear-gradient(90deg,
         transparent 0%,
-        rgba(255,255,255,0.12) 20%,
-        rgba(255,255,255,0.12) 80%,
+        rgba(255,255,255,0.10) 20%,
+        rgba(255,255,255,0.10) 80%,
         transparent 100%);
-      margin: 0 48px;
     }
 
-    /* Chip de seguridad */
     .hd-chip {
       position: relative; z-index: 2;
-      padding: 14px 48px;
+      padding: 16px 52px 20px;
       display: flex;
       align-items: center;
       gap: 10px;
     }
     .chip-dot {
-      width: 6px; height: 6px;
+      width: 7px; height: 7px;
       background: var(--green);
       border-radius: 50%;
-      box-shadow: 0 0 0 3px rgba(34,168,75,0.25);
+      box-shadow: 0 0 0 3px rgba(34,168,75,0.28);
       flex-shrink: 0;
     }
     .chip-text {
       font-size: 11px;
-      color: rgba(180,210,255,0.5);
-      letter-spacing: 1.5px;
+      color: rgba(180,210,255,0.50);
+      letter-spacing: 1.8px;
       text-transform: uppercase;
-      font-weight: 500;
-    }
-
-    /* ─────────────────────────────────────
-       BODY
-    ───────────────────────────────────── */
-    .bd {
-      padding: 48px 48px 40px;
-    }
-
-    /* Sección saludo */
-    .greeting-label {
-      font-size: 11px;
       font-weight: 600;
-      letter-spacing: 2px;
+    }
+
+    /* ── Body ── */
+    .bd {
+      padding: 52px 52px 44px;
+    }
+
+    .greeting-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.2px;
       text-transform: uppercase;
       color: var(--mid);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .greeting-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 26px;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 28px;
       font-weight: 400;
       color: var(--ink);
-      line-height: 1.2;
-      margin-bottom: 16px;
+      line-height: 1.25;
+      margin-bottom: 18px;
     }
 
     .greeting-body {
-      font-size: 14.5px;
+      font-size: 15px;
       font-weight: 400;
       color: var(--slate);
-      line-height: 1.75;
-      max-width: 440px;
+      line-height: 1.80;
+      max-width: 460px;
     }
     .greeting-body strong {
       color: var(--ink);
       font-weight: 600;
     }
 
-    /* Separador */
     .rule {
       border: none;
       border-top: 1px solid var(--rule);
-      margin: 32px 0;
+      margin: 36px 0;
     }
 
-    /* Bloque de datos de solicitud */
+    /* ── Meta block ── */
     .meta-block {
-      background: #f8faff;
-      border: 1px solid #e0e8f8;
-      border-radius: 10px;
+      background: #f7f9ff;
+      border: 1px solid #dde6f8;
+      border-radius: 12px;
       overflow: hidden;
-      margin-bottom: 32px;
+      margin-bottom: 36px;
     }
     .meta-row {
       display: flex;
       align-items: center;
-      padding: 13px 20px;
+      padding: 14px 22px;
       font-size: 13.5px;
-      gap: 14px;
+      gap: 16px;
     }
     .meta-row + .meta-row {
-      border-top: 1px solid #e9eef8;
+      border-top: 1px solid #e6ecf7;
     }
     .meta-icon {
-      width: 32px; height: 32px;
+      width: 34px; height: 34px;
       background: var(--white);
-      border: 1px solid #dde5f5;
-      border-radius: 8px;
-      display: flex; align-items:center; justify-content:center;
+      border: 1px solid #dde6f8;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
     .meta-label {
       color: var(--muted);
       font-weight: 500;
-      min-width: 90px;
+      min-width: 94px;
       font-size: 12.5px;
     }
     .meta-value {
@@ -266,46 +230,51 @@
       font-size: 13.5px;
     }
     .meta-badge {
-      background: #fef9ec;
-      border: 1px solid #f5d87a;
+      background: #fff8e6;
+      border: 1px solid #f5c842;
       color: #7a4f00;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 10px;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 12px;
       border-radius: 20px;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
     }
 
-    /* CTA */
+    /* ── CTA ── */
     .cta-wrap {
-      margin-bottom: 28px;
+      margin-bottom: 32px;
+      text-align: center;
     }
     .cta-label {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 14px;
+      font-size: 13px;
+      color: var(--slate);
+      margin-bottom: 20px;
       font-weight: 400;
+      text-align: left;
     }
     .cta-btn {
       display: inline-block;
-      background: var(--navy);
+      background: linear-gradient(135deg, #1259c3 0%, #0a3d8f 100%);
       color: #ffffff !important;
       text-decoration: none;
       font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      padding: 15px 36px;
-      border-radius: 8px;
-      border-bottom: 3px solid rgba(0,0,0,0.25);
-      transition: background 0.2s;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      padding: 17px 48px;
+      border-radius: 10px;
+      box-shadow:
+        0 4px 14px rgba(18,89,195,0.40),
+        0 1px 3px rgba(18,89,195,0.20);
+      border-bottom: 3px solid rgba(5,25,80,0.30);
     }
     .cta-secondary {
       display: block;
-      margin-top: 14px;
+      margin-top: 18px;
       font-size: 12px;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.65;
+      text-align: left;
     }
     .cta-secondary a {
       color: var(--mid);
@@ -314,42 +283,41 @@
       border-bottom: 1px solid #c5d8f5;
     }
 
-    /* Aviso de seguridad */
+    /* ── Notice ── */
     .notice {
-      border: 1px solid var(--rule);
-      border-left: 3px solid var(--slate);
-      border-radius: 0 8px 8px 0;
-      padding: 14px 18px;
+      background: #f9fafb;
+      border: 1px solid #e4e9f2;
+      border-left: 4px solid #94a3b8;
+      border-radius: 0 10px 10px 0;
+      padding: 18px 22px;
       display: flex;
-      gap: 14px;
+      gap: 16px;
       align-items: flex-start;
     }
     .notice-icon {
       flex-shrink: 0;
       margin-top: 1px;
     }
-    .notice-icon svg { display:block; }
+    .notice-icon svg { display: block; }
     .notice-text {
-      font-size: 13px;
+      font-size: 13.5px;
       color: var(--slate);
-      line-height: 1.6;
+      line-height: 1.70;
     }
     .notice-text strong { color: var(--ink); }
 
-    /* ─────────────────────────────────────
-       FOOTER
-    ───────────────────────────────────── */
+    /* ── Footer ── */
     .ft {
-      background: #f0f3f9;
-      border-top: 1px solid var(--rule);
-      padding: 24px 48px;
+      background: #edf0f7;
+      border-top: 1px solid #dde4f0;
+      padding: 28px 52px;
     }
 
     .ft-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       flex-wrap: wrap;
       gap: 12px;
     }
@@ -357,41 +325,64 @@
     .ft-brand {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
     }
     .ft-pin {
       width: 22px; height: 26px;
     }
     .ft-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 15px;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 16px;
       color: var(--ink);
     }
 
     .ft-links {
       display: flex;
-      gap: 16px;
+      gap: 18px;
     }
     .ft-links a {
       font-size: 12px;
       color: var(--muted);
       text-decoration: none;
+      font-weight: 500;
     }
 
     .ft-rule {
       border: none;
-      border-top: 1px solid var(--rule);
-      margin: 0 0 14px;
+      border-top: 1px solid #d5dcea;
+      margin: 0 0 16px;
     }
 
     .ft-copy {
       font-size: 11.5px;
       color: var(--muted);
-      line-height: 1.65;
+      line-height: 1.70;
     }
     .ft-copy span {
       color: var(--ink);
-      font-weight: 500;
+      font-weight: 600;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 500px) {
+      body { padding: 24px 12px; }
+
+      .hd-inner   { padding: 32px 28px 26px; gap: 16px; }
+      .hd-divider { margin: 0 28px; }
+      .hd-chip    { padding: 14px 28px 18px; }
+
+      .bd { padding: 36px 28px 32px; }
+
+      .hd-brand-name  { font-size: 24px; }
+      .greeting-title { font-size: 22px; }
+
+      .meta-row   { padding: 12px 16px; flex-wrap: wrap; }
+      .meta-label { min-width: unset; }
+
+      .cta-btn { padding: 15px 32px; font-size: 14px; width: 100%; text-align: center; display: block; }
+
+      .ft { padding: 24px 28px; }
+      .ft-top { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -403,35 +394,22 @@
 
   <div class="card">
 
-    <!-- ══ HEADER ══ -->
+    <!-- HEADER -->
     <div class="hd">
-      <div class="hd-bg"></div>
+      <div class="hd-glow"></div>
 
-      <!-- Trazas de ruta SVG -->
       <div class="hd-routes">
-        <svg viewBox="0 0 580 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M-20 70 Q140 30 290 50 Q440 70 600 20" stroke="white" stroke-width="1.2" fill="none"/>
-          <path d="M-20 80 Q180 20 360 55 Q480 75 610 30" stroke="white" stroke-width="0.7" fill="none" stroke-dasharray="4 6"/>
-          <path d="M-20 55 Q100 40 260 60 Q400 78 610 40" stroke="white" stroke-width="0.5" fill="none" stroke-dasharray="2 8"/>
-          <!-- puntos en la ruta -->
-          <circle cx="120" cy="48" r="2.5" fill="white"/>
-          <circle cx="290" cy="50" r="2.5" fill="#7dd3fc"/>
-          <circle cx="420" cy="60" r="2.5" fill="white"/>
+        <svg viewBox="0 0 600 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M-20 70 Q140 28 290 50 Q440 70 620 18" stroke="white" stroke-width="1.4" fill="none"/>
+          <path d="M-20 80 Q180 18 360 55 Q490 75 630 28" stroke="white" stroke-width="0.8" fill="none" stroke-dasharray="4 7"/>
+          <path d="M-20 52 Q100 38 260 60 Q400 78 630 38" stroke="white" stroke-width="0.5" fill="none" stroke-dasharray="2 9"/>
+          <circle cx="120" cy="46" r="3" fill="white"/>
+          <circle cx="290" cy="50" r="3" fill="#7dd3fc"/>
+          <circle cx="430" cy="60" r="3" fill="white"/>
         </svg>
       </div>
 
-      <!-- Puntos de luz parpadeantes -->
-      <div class="hd-dots">
-        <i style="left:8%;top:25%;--d:5s;--dl:0s;--op:0.6"></i>
-        <i style="left:22%;top:55%;--d:4s;--dl:1.2s;--op:0.5"></i>
-        <i style="left:55%;top:18%;--d:6s;--dl:0.5s;--op:0.8"></i>
-        <i style="left:70%;top:62%;--d:4.5s;--dl:2s;--op:0.5"></i>
-        <i style="left:88%;top:30%;--d:5.5s;--dl:0.8s;--op:0.7"></i>
-        <i style="left:40%;top:70%;--d:3.8s;--dl:1.8s;--op:0.4"></i>
-      </div>
-
       <div class="hd-inner">
-        <!-- Logo pin recreado en SVG limpio -->
         <svg class="hd-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 68">
           <defs>
             <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
@@ -439,24 +417,20 @@
               <stop offset="100%" stop-color="#1e8c00"/>
             </linearGradient>
             <filter id="shadow">
-              <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/>
+              <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#000" flood-opacity="0.28"/>
             </filter>
           </defs>
-          <!-- Pin shape -->
           <path d="M28 2C15.3 2 5 12.3 5 25c0 16.5 23 41 23 41S51 41.5 51 25C51 12.3 40.7 2 28 2z"
                 fill="url(#g1)" filter="url(#shadow)"/>
           <path d="M28 2C15.3 2 5 12.3 5 25c0 16.5 23 41 23 41S51 41.5 51 25C51 12.3 40.7 2 28 2z"
-                fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
-          <!-- Highlight -->
-          <path d="M18 7 C11 12 7 18 7 25 C9 14 17 7 26 5Z" fill="rgba(255,255,255,0.22)"/>
-          <!-- Círculo blanco -->
+                fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
+          <path d="M18 7 C11 12 7 18 7 25 C9 14 17 7 26 5Z" fill="rgba(255,255,255,0.20)"/>
           <circle cx="28" cy="24" r="16" fill="white"/>
-          <!-- Bus icon -->
           <g transform="translate(17,15)">
             <rect x="0" y="1" width="22" height="15" rx="3" fill="#1259c3"/>
             <rect x="2" y="3" width="7" height="5" rx="1.5" fill="#e8f2ff" opacity="0.95"/>
             <rect x="13" y="3" width="7" height="5" rx="1.5" fill="#e8f2ff" opacity="0.95"/>
-            <rect x="0" y="10" width="22" height="3" rx="0" fill="rgba(10,40,100,0.3)"/>
+            <rect x="0" y="10" width="22" height="3" rx="0" fill="rgba(10,40,100,0.28)"/>
             <circle cx="5"  cy="18" r="3" fill="#0a2566"/>
             <circle cx="5"  cy="18" r="1.5" fill="#c5d8f5"/>
             <circle cx="17" cy="18" r="3" fill="#0a2566"/>
@@ -470,29 +444,27 @@
         </div>
       </div>
 
-      <div class="hd-rule"></div>
+      <div class="hd-divider"></div>
 
       <div class="hd-chip">
         <div class="chip-dot"></div>
         <div class="chip-text">Verificación de seguridad de cuenta</div>
       </div>
     </div>
-    <!-- /HEADER -->
 
-    <!-- ══ BODY ══ -->
+    <!-- BODY -->
     <div class="bd">
 
-      <div class="greeting-label">Estimado usuario</div>
+      <span class="greeting-label">Estimado usuario</span>
       <h1 class="greeting-title">Restablecimiento<br/>de contraseña</h1>
       <p class="greeting-body">
         Hola, <strong>{{nombre}}</strong>. Recibimos una solicitud para restablecer la contraseña
         asociada a tu cuenta en <strong>WebBus</strong>. Si realizaste esta acción,
-        sigue las instrucciones a continuación para continuar.
+        sigue las instrucciones a continuación para continuar de forma segura.
       </p>
 
       <hr class="rule"/>
 
-      <!-- Detalles -->
       <div class="meta-block">
         <div class="meta-row">
           <div class="meta-icon">
@@ -519,14 +491,13 @@
             </svg>
           </div>
           <span class="meta-label">Validez</span>
-          <span class="meta-badge">Expira en 30 minutos</span>
+          <span class="meta-badge">⏱ Expira en 30 minutos</span>
         </div>
       </div>
 
-      <!-- CTA -->
       <div class="cta-wrap">
-        <p class="cta-label">Haz clic en el siguiente botón para continuar:</p>
-        <a href="{{link_recuperacion}}" class="cta-btn">Restablecer contraseña</a>
+        <p class="cta-label">Haz clic en el siguiente botón para crear tu nueva contraseña:</p>
+        <a href="{{link_recuperacion}}" class="cta-btn">🔐 Restablecer contraseña</a>
         <span class="cta-secondary">
           Si el botón no funciona, copia y pega este enlace en tu navegador:<br/>
           <a href="{{link_recuperacion}}">{{link_recuperacion}}</a>
@@ -535,11 +506,10 @@
 
       <hr class="rule"/>
 
-      <!-- Aviso de seguridad -->
       <div class="notice">
         <div class="notice-icon">
-          <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
-            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 13H9v-2h2v2zm0-4H9V7h2v3zm4 4h-2v-2h2v2zm0-4h-2V7h2v3z" fill="#4a5771"/>
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 13H9v-2h2v2zm0-4H9V7h2v3zm4 4h-2v-2h2v2zm0-4h-2V7h2v3z" fill="#64748b"/>
           </svg>
         </div>
         <p class="notice-text">
@@ -550,9 +520,8 @@
       </div>
 
     </div>
-    <!-- /BODY -->
 
-    <!-- ══ FOOTER ══ -->
+    <!-- FOOTER -->
     <div class="ft">
       <div class="ft-top">
         <div class="ft-brand">
@@ -564,7 +533,7 @@
               </linearGradient>
             </defs>
             <path d="M28 2C15.3 2 5 12.3 5 25c0 16.5 23 41 23 41S51 41.5 51 25C51 12.3 40.7 2 28 2z" fill="url(#g2)"/>
-            <path d="M28 2C15.3 2 5 12.3 5 25c0 16.5 23 41 23 41S51 41.5 51 25C51 12.3 40.7 2 28 2z" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+            <path d="M28 2C15.3 2 5 12.3 5 25c0 16.5 23 41 23 41S51 41.5 51 25C51 12.3 40.7 2 28 2z" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
             <circle cx="28" cy="24" r="16" fill="white"/>
             <g transform="translate(17,15)">
               <rect x="0" y="1" width="22" height="15" rx="3" fill="#1259c3"/>
@@ -585,13 +554,11 @@
       <hr class="ft-rule"/>
       <p class="ft-copy">
         © 2026 <span>WebBus</span> — Nicole Castilla, Marlon Pertuz y Joshua Castro.<br/>
-        Este es un mensaje automático generado por el sistema. Por favor no respondas a este correo.
+        Este es un mensaje automático. Por favor no respondas a este correo.
       </p>
     </div>
-    <!-- /FOOTER -->
 
   </div>
-  <!-- /CARD -->
 
 </div>
 
