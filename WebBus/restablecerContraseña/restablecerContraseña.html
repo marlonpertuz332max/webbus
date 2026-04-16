@@ -26,6 +26,18 @@
                     <p>Ingresa tu nueva contraseña para restablecer el acceso a tu cuenta.</p>
                 </div>
 
+                <!-- Mensaje de token inválido (oculto por defecto) -->
+                <div id="tokenError" style="display:none; text-align:center; padding: 20px 0;">
+                    <p style="font-size:40px; margin-bottom:12px;">⛔</p>
+                    <p style="color: rgba(255,255,255,0.85); font-size:15px; line-height:1.6; margin-bottom:20px;" id="tokenErrorMsg">
+                        El enlace de recuperación es inválido o ha expirado.
+                    </p>
+                    <a href="../recuperarContraseña/recuperarContraseña.html"
+                       class="wb-btn wb-btn-primary" style="display:inline-block; padding: 12px 28px;">
+                        Solicitar nuevo enlace
+                    </a>
+                </div>
+
                 <form id="resetPasswordForm" class="auth-form" novalidate>
                     <div class="wb-form-group">
                         <label class="wb-label" for="newPassword">Nueva contraseña</label>
@@ -93,5 +105,6 @@
     </footer>
 
     <script src="restablecerContraseña.js"></script>
+    <script src="../eyeToggle.js"></script>
 </body>
 </html>

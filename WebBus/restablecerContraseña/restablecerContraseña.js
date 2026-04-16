@@ -91,45 +91,52 @@ style.textContent = `
 document.head.appendChild(style);
 
 // ============================================================
-// TOGGLE MOSTRAR/OCULTAR CONTRASEÑA
-// ============================================================
-
-document.querySelectorAll('.eye-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        const input = document.getElementById(this.dataset.target);
-        const eyeIcon = this.querySelector('.eye-icon');
-        const eyeOffIcon = this.querySelector('.eye-off-icon');
-        if (input.type === 'password') {
-            input.type = 'text';
-            eyeIcon.style.display = 'none';
-            eyeOffIcon.style.display = 'block';
-        } else {
-            input.type = 'password';
-            eyeIcon.style.display = 'block';
-            eyeOffIcon.style.display = 'none';
-        }
-    });
-});
-
-// ============================================================
 // LÓGICA PRINCIPAL
 // ============================================================
 
 document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("resetPasswordForm");
+    const tokenErrorDiv = document.getElementById("tokenError");
+    const tokenErrorMsg = document.getElementById("tokenErrorMsg");
+
+    function mostrarErrorToken(mensaje) {
+        if (form) form.style.display = 'none';
+        if (tokenErrorDiv) {
+            tokenErrorMsg.textContent = mensaje;
+            tokenErrorDiv.style.display = 'block';
+        }
+    }
+
     // Verificar que exista un token válido
     if (!recoveryToken) {
-        showNotification('Enlace de recuperación inválido o expirado.', 'error');
-        setTimeout(() => {
-            window.location.href = "../inicioSesion/inicioSesion.html";
-        }, 3000);
+        mostrarErrorToken('No se encontró un enlace de recuperación. Por favor solicita uno nuevo.');
         return;
     }
 
-    console.log('🔐 Token recibido en URL:', recoveryToken);
-    showNotification('Token de recuperación validando...', 'info');
+    // Validar el token contra el servidor antes de mostrar el formulario
+    fetch('../api/reset-password.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: recoveryToken, password: '__check__' })
+    })
+    .then(res => res.json())
+    .then(data => {
+        // Si el error es de contraseña (mínimo 6 chars), el token SÍ es válido
+        if (data.success || (data.error && data.error.includes('caracteres'))) {
+            if (form) form.style.display = '';
+        } else {
+            mostrarErrorToken(data.error || 'El enlace de recuperación es inválido o ha expirado.');
+        }
+    })
+    .catch(() => {
+        // Si falla la conexión, mostramos el formulario de todas formas
+        if (form) form.style.display = '';
+    });
+
+    // Ocultar el formulario mientras se valida
+    if (form) form.style.display = 'none';
 
     // Manejar el envío del formulario
-    const form = document.getElementById("resetPasswordForm");
     if (form) {
         form.addEventListener("submit", async function(e) {
             e.preventDefault();

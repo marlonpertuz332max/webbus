@@ -34,6 +34,9 @@ server {
     location = /index.html {
         return 301 /iniciowebbus/index.html;
     }
+    
+    error_page 404 /404.html;
+    
     location / {
         try_files \$uri \$uri/ =404;
     }
