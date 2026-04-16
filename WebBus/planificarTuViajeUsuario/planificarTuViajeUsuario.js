@@ -41,11 +41,10 @@ navigator.geolocation.watchPosition(function(pos) {
     miLat = pos.coords.latitude;
     miLon = pos.coords.longitude;
 
-    mapa.setView([miLat, miLon], 16);
-
     if (marcadorUsuario) {
         marcadorUsuario.setLatLng([miLat, miLon]);
     } else {
+        mapa.setView([miLat, miLon], 16);
         marcadorUsuario = L.marker([miLat, miLon], { icon: iconoUsuario })
             .addTo(mapa)
             .bindPopup("📍 Estás aquí")
