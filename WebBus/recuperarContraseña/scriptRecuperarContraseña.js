@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', initializeEmailJS);
 // Solicitar Token del SERVIDOR
 async function requestRecoveryToken(email) {
     try {
-        const response = await fetch('api/request-password-recovery.php', {
+        const response = await fetch('../api/request-password-recovery.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: email })

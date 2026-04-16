@@ -91,6 +91,27 @@ style.textContent = `
 document.head.appendChild(style);
 
 // ============================================================
+// TOGGLE MOSTRAR/OCULTAR CONTRASEÑA
+// ============================================================
+
+document.querySelectorAll('.eye-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const input = document.getElementById(this.dataset.target);
+        const eyeIcon = this.querySelector('.eye-icon');
+        const eyeOffIcon = this.querySelector('.eye-off-icon');
+        if (input.type === 'password') {
+            input.type = 'text';
+            eyeIcon.style.display = 'none';
+            eyeOffIcon.style.display = 'block';
+        } else {
+            input.type = 'password';
+            eyeIcon.style.display = 'block';
+            eyeOffIcon.style.display = 'none';
+        }
+    });
+});
+
+// ============================================================
 // LÓGICA PRINCIPAL
 // ============================================================
 
@@ -140,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Enviar al servidor para restablecer contraseña
             try {
-                const response = await fetch('api/reset-password.php', {
+                const response = await fetch('../api/reset-password.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

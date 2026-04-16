@@ -77,7 +77,7 @@ if (!$stmt_update->execute()) {
 // ✅ Token guardado correctamente
 // Construir URL de recuperación
 $base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'];
-$recovery_url = $base_url . "/WebBus/restablecerContraseña/restablecerContraseña.html?token=" . $recovery_token;
+$recovery_url = $base_url . "/restablecerContraseña/restablecerContraseña.html?token=" . $recovery_token;
 
 // Preparar datos para EmailJS
 $fecha_actual = date('d de F de Y H:i', strtotime('now'));
